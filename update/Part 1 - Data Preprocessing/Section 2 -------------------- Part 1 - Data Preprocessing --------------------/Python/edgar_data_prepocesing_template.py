@@ -13,12 +13,12 @@ import pandas as pd
 # quitar la notación científica de los resultados
 np.set_printoptions(suppress=True)
 
-# setear el directorio de trabajo
+############### 1.setear el directorio de trabajo #############################
 os.chdir("/Users/edgarmora/Documents/GitHub/machinelearning-az/update/Part 1 - Data Preprocessing/Section 2 -------------------- Part 1 - Data Preprocessing --------------------/Python")
 os.getcwd()
 os.listdir()
 
-########################### Importar el dataset ###############################
+########################### 2.Importar el dataset ###############################
 # Asegúrate de que 'Data.csv' esté en el mismo directorio o proporciona la ruta completa.
 dataset = pd.read_csv("Data.csv")
 
@@ -31,7 +31,7 @@ x
 x = dataset.iloc[:, [0,3]].values# primera y ultima columna
 x
 
-############################## Manejo de datos faltantes ######################
+############################## 3.Manejo de datos faltantes ######################
 # Utilizamos SimpleImputer para reemplazar valores nulos con la media de la columna
 from sklearn.impute import SimpleImputer
 imputer = SimpleImputer(missing_values=np.nan, strategy='mean')  # Estrategia: reemplazar valores nulos con la media
@@ -48,7 +48,7 @@ print(imputer.statistics_)
 X[:, 1:3] = imputer.transform(X[:, 1:3])  # Reemplazamos los valores nulos en las columnas seleccionadas
 X
 
-###################### datos factoriales #######################################
+###################### datos categóricos #######################################
 
 
 
