@@ -6,19 +6,7 @@ dir()
 
 ########################### 2.Importar el dataset ###############################
 dataset = read.csv("Data.csv")
-
-############################## 3.Manejo de datos faltantes ######################
-# primera forma de reemplazar datos faltantes en age
-dataset$Age = ifelse(is.na(dataset$Age),
-                     ave(dataset$Age, FUN = function(x) mean(x, na.rm = TRUE)),
-                     dataset$Age)
-# segunda forma de reemplazar datos faltantes en age
-dataset$Age[is.na(dataset$Age)] <- mean(dataset$Age, na.rm = TRUE)
-
-dataset$Salary = ifelse(is.na(dataset$Salary),
-                        ave(dataset$Salary, FUN = function(x) mean(x, na.rm = TRUE)),
-                        dataset$Salary)
-dataset$Salary[is.na(dataset$Salary)] <- mean(dataset$Salary, na.rm = TRUE)
+# dataset <- dataset[,2:3]
 
 ###################### 4.datos categóricos #######################################
 dataset$Country = factor(dataset$Country,
@@ -38,14 +26,6 @@ training_set <- subset(dataset, split == TRUE)
 testing_set <- subset(dataset, split == FALSE)
 
 ###################### 6.escalar datos #######################################
-training_set[,2:3] <- scale(training_set[,2:3])
-testing_set[,2:3] <- scale(testing_set[,2:3])
-
-
-
-
-
-
-
-
+# training_set[,2:3] <- scale(training_set[,2:3])
+# testing_set[,2:3] <- scale(testing_set[,2:3])
 

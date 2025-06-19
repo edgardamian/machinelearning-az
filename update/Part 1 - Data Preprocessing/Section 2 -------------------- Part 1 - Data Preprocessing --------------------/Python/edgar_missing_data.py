@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Thu Apr 10 22:52:30 2025
+Created on Wed Jun 18 22:04:02 2025
 
 @author: edgarmora
 """
@@ -27,7 +27,6 @@ x
 y = dataset.iloc[:,3].values
 y
 
-
 ############################## 3.Manejo de datos faltantes ######################
 # Utilizamos SimpleImputer para reemplazar valores nulos con la media de la columna
 from sklearn.impute import SimpleImputer
@@ -40,69 +39,13 @@ print(imputer.statistics_)
 x[:, 1:3] = imputer.transform(x[:, 1:3])  # Reemplazamos los valores nulos en las columnas seleccionadas
 x
 
-###################### 4.datos categóricos #######################################
-from sklearn.compose import ColumnTransformer
-from sklearn.preprocessing import OneHotEncoder
-# Aplicamos OneHotEncoder a la primera columna (índice 0)
-ct = ColumnTransformer(transformers=[('encoder', OneHotEncoder(), [0])], remainder='passthrough')
-x = np.array(ct.fit_transform(x))  # Transformamos X y lo convertimos a un array de NumPy
-print(x)
-
-
-from sklearn.preprocessing import LabelEncoder
-le = LabelEncoder()
-y = le.fit_transform(y)  # Transformamos las etiquetas categóricas en valores numéricos
-print(y)
-
 ###################### 5.dividir datos para entrenamiento #######################################
 from sklearn.model_selection import train_test_split
 # Usamos 80% para entrenamiento y 20% para prueba
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=0)
 
 ###################### 6.escalar datos #######################################
-from sklearn.preprocessing import StandardScaler
-
+"""from sklearn.preprocessing import StandardScaler
 sc_x = StandardScaler()
 x_train = sc_x.fit_transform(x_train)
-x_test = sc_x.transform(x_test)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+x_test = sc_x.transform(x_test)"""
